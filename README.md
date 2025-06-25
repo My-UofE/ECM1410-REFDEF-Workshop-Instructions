@@ -1,24 +1,10 @@
-# Workshop Week 09: Serialisation and IO
+# REFDEF Workshop:
 
-**UPDATE Friday 9th May**
-
-Workshop grading is now complete. In your W9 codespace directory please run the following commands if you wish to run the grading script yourself:
-
-```bash
-curl https://raw.githubusercontent.com/My-UofE/ECM1410-Workshop-09-Instructions/refs/heads/main/grading.zip -o ./grading.zip 
-unzip grading.zip
-bash ./test_workshop_09/do_grading.sh
-```
-
-**UPDATE Monday 17th March**
 
 Judst to say last Friday I also provided a demo user interface class that can be used to test your code. Instructions are at the very bottom of this page. If the test user interface code does not run when used in conjunction with your MessageBoard.java backend, this is indicative of an issue i.e. you may be graded 0 for the workshop. Please visit Harrison 107 between 9:35-12:25 on Tuesday morning if you have an issue you cannot solve yourself. 
 
 A note on exceptions. **The `MessageBoard.java` class is not meant to catch any exceptions** and the methods should throw those as listed in the `MessageBoardInterface.java` (they get handled by the user interface system. 
 
-**UPDATE Friday 13th March** Updated to clarify how to handle exceptions
-
-Please check the additional gudiance on how to deal with the exceptions and implement it in your code.
 
 ## MessageBoard java project
 
@@ -47,10 +33,12 @@ public class Post implements Serializable {
     private String author;
     private String subject;
     private String message;
+    private String[] tags;
+    private int parentID;
     private int date;
 
     public Post(String author, String subject, String message) {
-        this(author, subject, message, null);
+        this(author, subject, message, null, null, null);
     }
 
     public Post(String author, String subject, String message, LocalDate date) {
@@ -58,6 +46,8 @@ public class Post implements Serializable {
         this.author = author;
         this.subject = subject;
         this.message = message;
+        this.tags = null;
+        this.parentID = -1;
         if (date == null) {
             this.date = (int)LocalDate.now().toEpochDay();
         } else {
@@ -66,7 +56,7 @@ public class Post implements Serializable {
     }
 
     public String toString() {
-        String result = String.format("Post[postID=%d, author=\"%s\", subject=\"%s\", message=\"%s\", date=%d]", 
+        String result = String.format("Post[postID=%d, author=\"%s\", subject=\"%s\", message=\"%s\", date=%d, tags=[], parentID=-1]", 
                                 postID, author, subject, message.replace("\n", "\\n"), date);
         return result;
     }
@@ -266,6 +256,30 @@ public interface MessageBoardInterface extends Serializable {
      */
     public void savePostAsTextFile(int postID, String filename)  throws IDInvalidException, IOException; 
 
+    /**
+     * Searches for replies to posts with specified parentID.
+     *
+     * @param parentID  the parent post to search for children of.
+     * @return an array of post IDs that match the criteria 
+     */
+    public int[] getReplyPosts(int parentID);
+
+    /**
+     * Searches for posts with subjects that contain the specified tag.
+     *
+     * @param tag  the tag to search for in the list of tags (case-insensitive)
+     * @return     an array of post IDs that match the search criteria
+     */
+    public int[] searchPostsByTag(String tag);
+
+    /**
+     * Returns list of all tags added to the system, in alphabetical order, without duplicates
+     *
+     * @return     an array of tag strings
+     */
+    public String[] getAllTags();
+
+
 }
 ```
 
@@ -431,7 +445,7 @@ Add the method `searchPostsByDate()` and in your test application check that wit
 
 The message board is required to have the ability to be serialisable, so it can save its contents to disk, and to restore its state from this file.
 
-Note that when the MessageBoard calls the `loadMessageBoard` loading from the file it should delete all of its existing data and replace it with the loaded data. 
+Note that when the MessageBoard calls the `loadMessageBoard` from the file it should delete all of its existing data and replace it with the loaded data. 
 
 This means that rather than serialising the MessageBoard object, we need to serialise and deserialise its attributes. 
 
@@ -485,7 +499,7 @@ Check they are loaded correctly by displaying the loaded posts to screen.
 
 #### TASK 8 
 
-The final interface method to implement is `savePostAsTextFile()`. This should call the `saveAsTextFile()` method from your `Post` class to save a given post.
+Implement the interface method `savePostAsTextFile()`. This should call the `saveAsTextFile()` method from your `Post` class to save a given post.
 
 In your `TestMBLoadApp.java` file add code to find the post with subject including search term `windows`, and to save the first matching post (there should be only one!) as test file `windowspost.txt`. Catch and handle the exceptions as above i.e.
 
@@ -498,11 +512,33 @@ try {
 }
 ```
 
+#### TASK 9 (ADDITIONAL REFDEF TASKS)
+
+In the `Post` class this REFDEF assignment has additional attributes `tags` and `parentID`. 
+
+Edit the code to add functionality related to these attributes as described below:
+
+ - add a constructor that accepts `tags` and `parentID` arguments and sets these attributes accordingly. `tags` should be provided as csv i.e. "java, IDE, urgent" would resolve to three tags ["java", "IDE", "urgent"]. `parentID` should either be set to `-1` to indicate the post is not a reply to a previous post, or be set to a valid parent post ID to indicate it is a reply to an earlier post. Your code should raise an `IllegalArgumentException` if the ID provided does not correspond to a valid post in the system.
+
+ - edit the `toString` method so that the details of the tags and parent ID are correctly displayed.
+
+ - complete the additional interface methods so they work in line with the interface documentation:
+
+    ```
+    public int[] getReplyPosts(int parentID);
+
+    public int[] searchPostsByTag(String tag);
+
+    public String[] getAllTags();
+    ```
+
+Create a third test program called `TestMBRefDef.java` that tests the code methods you have written.
+
 One this is working edit the `MessageBoard` definition to specify it `implements MessageBoardInterface` and check it compiles without errors.
 
 ### `package messageboard;`
 
-#### TASK 9
+#### TASK 10
 
 The final task is to arrange your work into a java project folder structure and prepare a jar fileto distribute your code as a java package `messageboard`.
 
@@ -536,7 +572,9 @@ java -cp ./build/mboard_v1.0.jar:TestSystem TestMBApp
 java -cp ./build/mboard_v1.0.jar:TestSystem TestMBLoadApp
  ```
 
-Well done! You have finished workshop 9.
+Well done! You have finished the REFDEF workshop 9.
+
+### INSTRUCTIONS BELOW WILL BE UPDATED TO SUPPORT THE ADDITIONAL REFDEF TASKS SHORTLY
 
 You can test your system using a (basic) text user interface.
 
