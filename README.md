@@ -1,16 +1,13 @@
 # REFDEF Workshop:
 
-
-Judst to say last Friday I also provided a demo user interface class that can be used to test your code. Instructions are at the very bottom of this page. If the test user interface code does not run when used in conjunction with your MessageBoard.java backend, this is indicative of an issue i.e. you may be graded 0 for the workshop. Please visit Harrison 107 between 9:35-12:25 on Tuesday morning if you have an issue you cannot solve yourself. 
-
 A note on exceptions. **The `MessageBoard.java` class is not meant to catch any exceptions** and the methods should throw those as listed in the `MessageBoardInterface.java` (they get handled by the user interface system. 
 
 
-## MessageBoard java project
+## MessageBoard java project (with post tags and reply functionality)
 
-In this workshop we are going to create a messageboard application in which users can add and view posts.
+In this workshop we are going to create a messageboard application in which users can add and view posts. This is similar to the tasks in Workshop 9 but have been revised for the REFDEF assessment, so please read and follow the updated instructions.
 
-Note for this workshop you do not need to work within a java project folder structure and should keep all files in the working directory.
+Note for this workshop you can initially keep all files in the working directory. Once you have the code working you can organise it into a strucutred project (see instructions below).
 
 ### `Post.java`
 
