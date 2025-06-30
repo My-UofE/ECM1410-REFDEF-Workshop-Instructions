@@ -570,28 +570,3 @@ java -cp ./build/mboard_v1.0.jar:TestSystem TestMBLoadApp
  ```
 
 Well done! You have finished the REFDEF workshop 9.
-
-### INSTRUCTIONS BELOW WILL BE UPDATED TO SUPPORT THE ADDITIONAL REFDEF TASKS SHORTLY
-
-You can test your system using a (basic) text user interface.
-
-Follow the instructions below to test your system...
-
- - First download the additional files with code to run the frontend of the system (Message Board user interface and test application). This interfaces with your code by using the methods defined in the `MessageBoardInterface.java` file:
-
-```sh
-curl -O -J -L https://github.com/My-UofE/ECM1410-Workshop-09-Instructions/raw/refs/heads/main/TestUI.zip
-unzip -o TestUI.zip; rm TestUI.zip
-```
-
-You can compile these using the MessageBoard class stored in your `jar` file and run the resulting applciation:
-
-```sh
-javac -cp ./build/mboard_v1.0.jar ./TestUI/*.java
-java -cp ./build/mboard_v1.0.jar:TestUI TestMBUIApp
-```
-
-Try to test all the possible functions to verify your code works as expected.
-
-Make sure you commit and push your work to the GitHub classroom so that it can be graded, and that you have followed the steps in the instructions as directed.
-
