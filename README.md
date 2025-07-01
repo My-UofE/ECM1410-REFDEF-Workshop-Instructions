@@ -1,7 +1,8 @@
 # REFDEF Workshop:
 
-A note on exceptions. **The `MessageBoard.java` class is not meant to catch any exceptions** and the methods should throw those as listed in the `MessageBoardInterface.java` (they get handled by the user interface system. 
+If you have to be reassessed on the 30% ECM1410 coursework you need to complete the following task based on workshop 9. (You do not have to complete/submit work for workshops 3,5,7).
 
+For submission please complete and submit the txt form available on the ELE module page. Please regularly check your email / forum for updates or advice, and feel free to ask for help via the REFDEF forum.
 
 ## MessageBoard java project (with post tags and reply functionality)
 
@@ -299,6 +300,9 @@ public class IDInvalidException extends RuntimeException {
 Write a `MessageBoard` class to implement this interface. 
 
 Start with the following code in file `MessageBoard.java` note that we will not add `implements MessageBoardInterface` until we have finished coding all the methods.
+
+A note on exceptions. **The `MessageBoard.java` class is not meant to catch any exceptions** and the methods should throw those as listed in the `MessageBoardInterface.java` (they will get handled by the user interface system). 
+
 
 ```java
 import java.util.*;
