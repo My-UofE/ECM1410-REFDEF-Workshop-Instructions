@@ -8,7 +8,7 @@ For submission please complete and submit the txt form available on the ELE modu
 
 In this workshop we are going to create a messageboard application in which users can add and view posts. This is similar to the tasks in Workshop 9 but have been revised for the REFDEF assessment, so please read and follow the updated instructions.
 
-Note for this workshop you can initially keep all files in the working directory. Once you have the code working you can organise it into a strucutred project (see instructions below).
+Note for this workshop you start with an empty directory. You can initially keep all files in the working directory. Once you have the code working you can organise it into a strucutred project (see instructions below).
 
 ### `Post.java`
 
@@ -16,7 +16,7 @@ We will start by creating a java object class to store the message board posts.
 
 #### TASK 1
 
-In file `Post.java` add the following code:
+Create a file called `Post.java` and add the following code:
 
 ```java
 import java.io.*;
