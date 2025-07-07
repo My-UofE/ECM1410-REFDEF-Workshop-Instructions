@@ -112,6 +112,8 @@ In the `Post.java` file add the following getters:
 
  `getPostID` `getAuthor` `getSubject` `getMessage` `getDate`
 
+NOTE: the getDate getter can return the stored date as an int 
+
 Also add a method to print a formatted version of the post
 
 ```java
@@ -354,7 +356,7 @@ Add the following code that lets us access the message board data. As several of
     }
 ```
 
-Now we can edit `MessageBoard.java` to add the `addPost()` and  `getFormattedPost()` interface methods:
+Now we can edit `MessageBoard.java` to add the `addPost()` and  `getFormattedPost()` interface methods (refer to the interface to see the documentation on what the method should do and return):
 
 ```java
 public int addPost(String author, String subject, String message){
