@@ -214,7 +214,7 @@ public interface MessageBoardInterface extends Serializable {
      * @return the ID of the newly added post
      * @throws IllegalArgumentException if any of the parameters are invalid
      */
-    public int addPostAdvanced(String author, String subject, String message, String tags, int parentID) throws IllegalArgumentException;
+    public int addPostAdvanced(String author, String subject, String message, String tagString, int parentID) throws IllegalArgumentException;
 
 
     /**
