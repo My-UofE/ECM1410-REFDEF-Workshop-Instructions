@@ -36,16 +36,22 @@ public class Post implements Serializable {
     private int date;
 
     public Post(String author, String subject, String message) {
-        this(author, subject, message, null, null, null);
+        String[] tags = new String[0];
+        this(author, subject, message, tags, -1, null);
     }
 
     public Post(String author, String subject, String message, LocalDate date) {
+        String[] tags = new String[0];
+        this(author, subject, message, tags, -1, date);
+    }
+
+    public Post(String author, String subject, String message, String[] tags, int parentID, LocalDate date) {
         this.postID = ++idCounter;
         this.author = author;
         this.subject = subject;
         this.message = message;
-        this.tags = null;
-        this.parentID = -1;
+        this.tags = tags;
+        this.parentID = parentID;
         if (date == null) {
             this.date = (int)LocalDate.now().toEpochDay();
         } else {
