@@ -555,10 +555,10 @@ try {
 In the `Post` class this REFDEF assignment has additional attributes `tags` and `parentID`. 
 
 1. Edit the code to add functionality related to these attributes. To do this first add the method `addPostAdvanced()` to `MessageBoard.java`. In addition to `author` `subject` `message` values, this method also takes values for `tagString` and `parentID` arguments.
+
+   - here `tagString` should be provided as a single string with tags separated with commas i.e. "java, IDE, urgent" would resolve to three tags ["java", "IDE", "urgent"]. You should convert the string to an array `String[]` for use with the relevant `Post` constructor method. 
  
- `tagString` should be provided as a single string with tags separated with commas i.e. "java, IDE, urgent" would resolve to three tags ["java", "IDE", "urgent"]. You should convert the string to an array `String[]` for use with the relevant `Post` constructor method. 
- 
- `parentID` should either be set to `-1` to indicate the post is not a reply to a previous post, or be set to a valid parent post ID to indicate it is a reply to an earlier post. Your code should check the `parentID` refers to a valid messageboard post and raise an `IllegalArgumentException` if the ID provided does not correspond to a valid post.
+   - the `parentID` should either be set to `-1` to indicate the post is not a reply to a previous post, or be set to a valid parent post ID to indicate it is a reply to an earlier post. Your code should check that if `parentID` is not `-1`, then it refers to a valid messageboard post. If an invalid ID has been given it should raise an `IllegalArgumentException`.
 
 2. edit the `toString` method so that the details of the tags and parent ID are correctly displayed (the current code shows these as empty / unspecified). You do not need to change the `toFormattedString` method.
 
