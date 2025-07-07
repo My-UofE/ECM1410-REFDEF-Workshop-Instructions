@@ -417,7 +417,7 @@ After deleting select and print the board messages to check the posts were delet
 
 Below your existing code in `TestMBApp.java` Add two new posts, but with adjusted dates. 
 
-To do this ou will need to edit `MessageBoard.java` to add a second `addPost` method that can accept a date, e.g. like 
+To do this you will need to edit `MessageBoard.java` to add a second `addPost` method that can accept a date, e.g. like 
 
 ```java
 public int addPost(String author, String subject, String message, int epochDate)
