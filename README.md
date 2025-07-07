@@ -80,7 +80,7 @@ Write a test application `TestPostApp.java` which creates a post with informatio
 | | |
 |-|-|
 | Author: | `Alex Adam` |
-| Subject: | `Help with JavaE` |
+| Subject: | `Help with Java` |
 |  Message: | `Hi, could anyone help me I need to learn how to code in java!` |
 
 Add code to print the object (using the `toString()` as above). 
