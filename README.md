@@ -554,19 +554,15 @@ try {
 
 In the `Post` class this REFDEF assignment has additional attributes `tags` and `parentID`. 
 
-Edit the code to add functionality related to these attributes as described below:
-
- - in MessageBoard.java add a method `addPostAdvanced()` that in addition to `author` `subject` `message` values, takes values for `tagString` and `parentID` arguments and sets these attributes accordingly.
- 
- ### NOTES: 
+1. Edit the code to add functionality related to these attributes. To do this first add the method `addPostAdvanced()` to `MessageBoard.java`. In addition to `author` `subject` `message` values, this method also takes values for `tagString` and `parentID` arguments.
  
  `tagString` should be provided as a single string with tags separated with commas i.e. "java, IDE, urgent" would resolve to three tags ["java", "IDE", "urgent"]. You should convert the string to an array `String[]` for use with the relevant `Post` constructor method. 
  
  `parentID` should either be set to `-1` to indicate the post is not a reply to a previous post, or be set to a valid parent post ID to indicate it is a reply to an earlier post. Your code should check the `parentID` refers to a valid messageboard post and raise an `IllegalArgumentException` if the ID provided does not correspond to a valid post.
 
- - edit the `toString` method so that the details of the tags and parent ID are correctly displayed (the current code shows these as empty / unspecified). You do not need to change the `toFormattedString` method.
+2. edit the `toString` method so that the details of the tags and parent ID are correctly displayed (the current code shows these as empty / unspecified). You do not need to change the `toFormattedString` method.
 
- - complete the additional interface methods so they work in line with the interface documentation:
+3. complete the additional interface methods so they work in line with the interface documentation:
 
     ```
     public int[] getReplyPosts(int parentID);
@@ -576,9 +572,9 @@ Edit the code to add functionality related to these attributes as described belo
     public String[] getAllTags();
     ```
 
-Create a third test program called `TestMBRefDef.java` that tests the code methods you have written.
+4. Create a third test program called `TestMBRefDef.java` that tests the code methods you have written.
 
-One this is working edit the `MessageBoard` definition to specify it `implements MessageBoardInterface` and check it compiles without errors.
+5. One this is working edit the `MessageBoard` definition to specify it `implements MessageBoardInterface` and check it compiles without errors.
 
 ### `package messageboard;`
 
