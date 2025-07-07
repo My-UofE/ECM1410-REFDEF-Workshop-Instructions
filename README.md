@@ -521,7 +521,7 @@ In the `Post` class this REFDEF assignment has additional attributes `tags` and 
 
 Edit the code to add functionality related to these attributes as described below:
 
- - add a constructor that accepts `tags` and `parentID` arguments and sets these attributes accordingly. `tags` should be provided as a single string with tags separated with commas i.e. "java, IDE, urgent" would resolve to three tags ["java", "IDE", "urgent"]. `parentID` should either be set to `-1` to indicate the post is not a reply to a previous post, or be set to a valid parent post ID to indicate it is a reply to an earlier post. Your code should raise an `IllegalArgumentException` if the ID provided does not correspond to a valid post in the system.
+ - add a constructor that in addition to `author` `subject` `message` values, takes values for `tags` and `parentID` arguments and sets these attributes accordingly. `tags` should be provided as a single string with tags separated with commas i.e. "java, IDE, urgent" would resolve to three tags ["java", "IDE", "urgent"]. `parentID` should either be set to `-1` to indicate the post is not a reply to a previous post, or be set to a valid parent post ID to indicate it is a reply to an earlier post. Your code should raise an `IllegalArgumentException` if the ID provided does not correspond to a valid post in the system.
 
  - edit the `toString` method so that the details of the tags and parent ID are correctly displayed.
 
