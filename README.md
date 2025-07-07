@@ -556,11 +556,15 @@ In the `Post` class this REFDEF assignment has additional attributes `tags` and 
 
 Edit the code to add functionality related to these attributes as described below:
 
- - in MessageBoard.java add a method `addPostAdvanced()` that in addition to `author` `subject` `message` values, takes values for `tagString` and `parentID` arguments and sets these attributes accordingly. `tagString` should be provided as a single string with tags separated with commas i.e. "java, IDE, urgent" would resolve to three tags ["java", "IDE", "urgent"]. `parentID` should either be set to `-1` to indicate the post is not a reply to a previous post, or be set to a valid parent post ID to indicate it is a reply to an earlier post. Your method should use the Post()
+ - in MessageBoard.java add a method `addPostAdvanced()` that in addition to `author` `subject` `message` values, takes values for `tagString` and `parentID` arguments and sets these attributes accordingly.
  
- -  Your code should raise an `IllegalArgumentException` if the ID provided does not correspond to a valid post in the system.
+ ### NOTES: 
+ 
+ `tagString` should be provided as a single string with tags separated with commas i.e. "java, IDE, urgent" would resolve to three tags ["java", "IDE", "urgent"]. You should convert the string to an array `String[]` for use with the relevant `Post` constructor method. 
+ 
+ `parentID` should either be set to `-1` to indicate the post is not a reply to a previous post, or be set to a valid parent post ID to indicate it is a reply to an earlier post. Your code should check the `parentID` refers to a valid messageboard post and raise an `IllegalArgumentException` if the ID provided does not correspond to a valid post.
 
- - edit the `toString` method so that the details of the tags and parent ID are correctly displayed.
+ - edit the `toString` method so that the details of the tags and parent ID are correctly displayed (the current code shows these as empty / unspecified). You do not need to change the `toFormattedString` method.
 
  - complete the additional interface methods so they work in line with the interface documentation:
 
